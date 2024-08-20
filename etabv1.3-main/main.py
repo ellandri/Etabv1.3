@@ -1,4 +1,7 @@
-from models import Utilisateur, Professeur, Eleve
+from utilisateur import Utilisateur
+from professeur import Professeur
+from eleve import Eleve
+
 from datetime import datetime
 import time
 
@@ -26,8 +29,7 @@ def afficher_menu_eleve():
     2: Supprimer un élève
     3: Modifier les informations de l'élève
     4: Lister les élèves
-    5: Obtenir le dernier élève ajouté
-    6: Retour
+    5: Retour
     0: Quitter
     ******************************************************
     """)
@@ -42,8 +44,7 @@ def afficher_menu_professeur():
     2: Supprimer un professeur
     3: Modifier les informations du professeur
     4: Lister les professeurs
-    5: Obtenir le dernier professeur ajouté
-    6: Accueil
+    5: Accueil
     ******************************************************
     """)
 
@@ -90,9 +91,8 @@ def menu_eleve():
             modifier_eleve()
         elif choix == '4':
             lister_eleves()
+        
         elif choix == '5':
-            obtenir_dernier_eleve()
-        elif choix == '6':
             menu_principal()
         elif choix == '0':
             quitter_application(start_time)
@@ -113,8 +113,6 @@ def menu_professeur():
         elif choix == '4':
             lister_professeurs()
         elif choix == '5':
-            obtenir_dernier_professeur()
-        elif choix == '6':
             menu_principal()
         else:
             print("Option invalide.")
@@ -192,15 +190,6 @@ def lister_professeurs():
         
 
 
-def obtenir_dernier_professeur():
-    try:
-        professeurs = Professeur.obtenirProfesseur()
-        if professeurs:
-            print("Le Dernier professeur ajouté :", professeurs[-1])
-        else:
-            print("Aucun professeur trouvé.")
-    except Exception as e:
-        print(f"Erreur lors de l'obtention du dernier professeur : {e}")
 
 def ajouter_eleve():
     try:
@@ -254,15 +243,6 @@ def lister_eleves():
 
 
 
-def obtenir_dernier_eleve():
-    try:
-        eleves = Eleve.obtenirEleve()
-        if eleves:
-            print("Le Dernier élève ajouté :", eleves[-1])
-        else:
-            print("Aucun élève trouvé.")
-    except Exception as e:
-        print(f"Erreur lors de l'obtention du dernier élève : {e}")
 
 def ajouter_utilisateur():
     try:
